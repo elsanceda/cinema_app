@@ -3,7 +3,7 @@ require "test_helper"
 class DashboardControllerTest < ActionDispatch::IntegrationTest
   
   def setup
-    @base_title = "Cinema Booking"
+    @base_title = "Cinema Booking App"
   end
 
   test "should get home" do
