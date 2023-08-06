@@ -16,7 +16,7 @@ class CinemasController < ApplicationController
     end
 
     def create
-      @Cinema = Cinema.new(cinema_params)
+      @cinema = Cinema.new(cinema_params)
       if @cinema.save
         flash[:success] = "Cinema created"
         redirect_to root_url # TODO: redirect to admin dashboard
@@ -30,6 +30,7 @@ class CinemasController < ApplicationController
     end
 
     def update
+        @cinema = Cinema.find(params[:id])
         if @cinema.update(cinema_params)
             flash[:success] = "Cinema updated"
             redirect_to @cinema

@@ -191,10 +191,6 @@ aside {
         padding: 0;
     }
 }
-  
-.users.follow {
-    padding: 0;
-}  
 
 /* forms */
 
@@ -232,16 +228,28 @@ input {
         font-weight: normal;
     }
 }
-    
-#session_remember_me {
-    width: auto;
-    margin-left: 0;
-}    
 
-/* Dropdown menu */
-.dropdown-menu.active {
-    display: block;
-}
+/* Cinemas index */
+.cinemas {
+    list-style: none;
+    margin: 0;
+    li {
+        overflow: auto;
+        padding: 10px 0;
+        border-bottom: 1px solid $gray-lighter;
+    }
+    h2 {
+        text-align: left;
+        margin-bottom: 10px;
+    }
+    a {
+        color: black;
+        &:hover {
+            text-decoration: none;
+            color: $gray;
+        }
+    }
+}    
 
 /* miscellaneous */
 
