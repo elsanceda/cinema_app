@@ -3,7 +3,8 @@ require "test_helper"
 class UsersLogin < ActionDispatch::IntegrationTest
   
   def setup
-    @user = users(:michael)
+    @user = users(:archer)
+    @admin = users(:michael)
   end
 end
 
@@ -29,8 +30,7 @@ class ValidLogin < UsersLogin
 
   def setup
     super
-    post login_path, params: { session: { email:    @user.email,
-                                          password: 'Password1' } }
+    log_in_as(@user)
   end
 end
 
@@ -38,12 +38,35 @@ class ValidLoginTest < ValidLogin
 
   test "valid login" do
     assert is_logged_in?
-    assert_redirected_to root_path
+    assert_redirected_to root_url
   end
 
   test "redirect after login" do
     follow_redirect!
     assert_template 'dashboard/home'
+    assert_select "a[href=?]", login_path, count: 0
+    assert_select "a[href=?]", logout_path
+  end
+end
+
+class AdminLogin < UsersLogin
+
+  def setup
+    super
+    log_in_as(@admin)
+  end
+end
+
+class AdminLoginTest < AdminLogin
+
+  test "admin valid login" do
+    assert is_logged_in?
+    assert_redirected_to admin_url
+  end
+
+  test "redirect admin after login" do
+    follow_redirect!
+    assert_template 'dashboard/admin'
     assert_select "a[href=?]", login_path, count: 0
     assert_select "a[href=?]", logout_path
   end
