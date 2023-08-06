@@ -19,7 +19,7 @@ class CinemasController < ApplicationController
       @cinema = Cinema.new(cinema_params)
       if @cinema.save
         flash[:success] = "Cinema created"
-        redirect_to root_url # TODO: redirect to admin dashboard
+        redirect_to @cinema
       else
         render 'new', status: :unprocessable_entity
       end
@@ -40,9 +40,9 @@ class CinemasController < ApplicationController
     end
 
     def destroy
-        @cinema.destroy
+        Cinema.find(params[:id]).destroy
         flash[:success] = "Cinema deleted"
-        redirect_to root_url # TODO: redirect to admin dashboard
+        redirect_to admin_url # TODO: redirect to admin dashboard
     end
 
     private

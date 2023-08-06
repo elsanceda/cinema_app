@@ -1,3 +1,16 @@
 <% provide(:title, @cinema.name) %>
-<h1><%= @cinema.name %></h1>
-<h2><%= @cinema.location %> | Seats: <%= @cinema.seats %></h2>
+<div class="flex">
+    <h1 class="left"><%= @cinema.name %></h1>
+
+    <% if current_user.admin? %>
+        <div class="btns">
+            <%= link_to "Edit", edit_cinema_path(@cinema),
+                                    class: "btn btn-md btn-primary" %>
+            <%= link_to "Delete", @cinema, data: { "turbo-method": :delete,
+                                                    turbo_confirm: "You sure?" },
+                                           class: "btn btn-md btn-danger" %>
+        </div>
+    <% end %>
+</div>
+
+<h2 class="left"><%= @cinema.location %> | Seats: <%= @cinema.seats %></h2>

@@ -10,7 +10,7 @@ class UsersController < ApplicationController
       reset_session
       log_in @user
       flash[:success] = "Welcome to the Cinema Booking App!"
-      redirect_to root_path
+      redirect_to root_url
     else
       render 'new', status: :unprocessable_entity
     end

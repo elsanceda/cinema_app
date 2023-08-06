@@ -32,6 +32,22 @@ textarea {
     }
 }
 
+.left {
+    text-align: left;
+}
+
+.flex {
+    display: flex;
+    align-items : center;
+    .btns {
+        margin-left: auto;
+    }
+    a {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
 /* typography */
 
 h1, h2, h3, h4, h5, h6 {
