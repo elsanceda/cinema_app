@@ -4,5 +4,5 @@ michael:
   full_name: Michael Example
   email: michael@example.com
   mobile_number: '1234'
-  password_digest: <%= User.digest('password') %>
+  password_digest: <%= User.digest('Password1') %>
   
