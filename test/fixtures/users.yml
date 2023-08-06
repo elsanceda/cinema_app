@@ -3,6 +3,14 @@
 michael:
   full_name: Michael Example
   email: michael@example.com
-  mobile_number: '1234'
+  mobile_number: '1'
   password_digest: <%= User.digest('Password1') %>
+  admin: true
+
+archer:
+  full_name: Sterling Archer
+  email: duchess@example.gov
+  mobile_number: '2'
+  password_digest: <%= User.digest('Password1') %>
+
   
