@@ -3,7 +3,7 @@ class CinemasController < ApplicationController
     before_action :admin_user,      only: [:new, :create, :edit, :update, :destroy]
 
     def index
-        @cinemas = Cinemas.paginate(page: params[:page])
+        @cinemas = Cinema.paginate(page: params[:page])
     end
 
     def show
