@@ -1,1 +1,6 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+grand:
+  name: The Grand Theater
+  location: Example City
+  seats: 10
