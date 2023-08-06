@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
         # Confirms an admin user.
         def admin_user
             unless current_user.admin?
-                flash[:error] = "You do not have the authorization to proceed"
+                flash[:danger] = "You do not have the authorization to proceed"
                 redirect_to root_url, status: :see_other
             end
         end

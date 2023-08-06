@@ -13,6 +13,8 @@
             <ul id="navbar-menu" 
                 class="nav navbar-nav navbar-right collapse navbar-collapse">
                 <li><%= link_to "Home", root_path %></li>
+                <li><%= link_to "Movies", movies_path %></li>
+                <li><%= link_to "Cinemas", cinemas_path %></li>
                 <% if logged_in? %>
                     <li>
                         <%= link_to "Log out", logout_path, 
