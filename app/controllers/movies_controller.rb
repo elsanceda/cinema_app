@@ -30,6 +30,7 @@ class MoviesController < ApplicationController
     end
 
     def update
+        @movie = Movie.find(params[:id])
         if @movie.update(movie_params)
             flash[:success] = "Movie updated"
             redirect_to @movie
@@ -47,6 +48,6 @@ class MoviesController < ApplicationController
     private
 
         def movie_params
-            params.require(:movie).permit(:name, :synopsis)
+            params.require(:movie).permit(:title, :synopsis)
         end
 end

@@ -229,8 +229,9 @@ input {
     }
 }
 
-/* Cinemas index */
-.cinemas {
+/* Indices */
+
+.cinemas, .movies {
     list-style: none;
     margin: 0;
     li {
@@ -249,7 +250,7 @@ input {
             color: $gray;
         }
     }
-}    
+}
 
 /* miscellaneous */
 
