@@ -41,22 +41,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_07_050923) do
   end
 
   create_table "showings", force: :cascade do |t|
+    t.integer "timeslot"
     t.bigint "cinema_id", null: false
     t.bigint "movie_id", null: false
-    t.bigint "timeslot_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["cinema_id", "timeslot_id"], name: "index_showings_on_cinema_id_and_timeslot_id", unique: true
+    t.index ["cinema_id", "timeslot"], name: "index_showings_on_cinema_id_and_timeslot", unique: true
     t.index ["cinema_id"], name: "index_showings_on_cinema_id"
     t.index ["movie_id"], name: "index_showings_on_movie_id"
-    t.index ["timeslot_id"], name: "index_showings_on_timeslot_id"
-  end
-
-  create_table "timeslots", force: :cascade do |t|
-    t.time "time", default: "2000-01-01 02:00:00"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["time"], name: "index_timeslots_on_time", unique: true
   end
 
   create_table "users", force: :cascade do |t|
@@ -75,5 +67,4 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_07_050923) do
   add_foreign_key "bookings", "users"
   add_foreign_key "showings", "cinemas"
   add_foreign_key "showings", "movies"
-  add_foreign_key "showings", "timeslots"
 end
