@@ -42,7 +42,7 @@ class MoviesController < ApplicationController
     def destroy
         Movie.find(params[:id]).destroy
         flash[:success] = "Movie deleted"
-        redirect_to admin_url # TODO: redirect to admin dashboard
+        redirect_to admin_url
     end
 
     private

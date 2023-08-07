@@ -1,6 +1,10 @@
 class ShowingsController < ApplicationController
-    before_action :logged_in_user,  only: [:new, :create, :edit, :update, :destroy]
-    before_action :admin_user,      only: [:new, :create, :edit, :update, :destroy]
+    before_action :logged_in_user,  only: [:new, :create, :destroy]
+    before_action :admin_user,      only: [:new, :create, :destroy]
+
+    def index
+        @showings = Showing.paginate(page: params[:page])
+    end
 
     def show
         @showing = Showing.find(params[:id])
@@ -21,6 +25,12 @@ class ShowingsController < ApplicationController
         else
             render 'new', status: :unprocessable_entity
         end
+    end
+
+    def destroy
+        Showing.find(params[:id]).destroy
+        flash[:success] = "Showing deleted"
+        redirect_to admin_url
     end
 
     # Returns list of available timeslots
