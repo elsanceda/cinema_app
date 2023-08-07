@@ -1,1 +1,6 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+action_show:
+  timeslot: 600
+  cinema: grand
+  movie: action

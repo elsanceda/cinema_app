@@ -1,1 +1,6 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+action_book:
+  seat_number: 1
+  showing: action_show
+  user: archer

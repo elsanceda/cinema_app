@@ -20,6 +20,11 @@ class CinemaTest < ActiveSupport::TestCase
     assert_not @cinema.valid?
   end
 
+  test "seats should be present" do
+    @cinema.seats = nil
+    assert_not @cinema.valid?
+  end
+
   test "should have 1-10 seats" do
     @cinema.seats = 0
     assert_not @cinema.valid?
