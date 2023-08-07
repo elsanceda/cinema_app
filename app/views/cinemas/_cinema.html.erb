@@ -1,4 +1,14 @@
 <li>
     <h2><%= link_to cinema.name, cinema %></h2>
     <%= cinema.location %></p>
+
+    <% if current_user.admin? %>
+        <div class="buttons">
+            <%= link_to "Edit", edit_cinema_path(cinema),
+                                    class: "btn btn-sm btn-primary" %>
+            <%= link_to "Delete", cinema, data: { "turbo-method": :delete,
+                                                    turbo_confirm: "You sure?" },
+                                           class: "btn btn-sm btn-danger" %>
+        </div>
+    <% end %>
 </li>

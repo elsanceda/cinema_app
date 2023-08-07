@@ -1,5 +1,13 @@
 <li>
     <h2><%= link_to showing.movie.title, showing %></h2>
     <%= time_in_words(showing.timeslot) %> | 
-    <%= showing.cinema.name %>
+    <%= showing.cinema.name %></p>
+
+    <% if current_user.admin? %>
+        <div class="buttons">
+            <%= link_to "Delete", showing, data: { "turbo-method": :delete,
+                                                    turbo_confirm: "You sure?" },
+                                           class: "btn btn-sm btn-danger" %>
+        </div>
+    <% end %>
 </li>

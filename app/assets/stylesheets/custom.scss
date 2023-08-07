@@ -39,13 +39,20 @@ textarea {
 .flex {
     display: flex;
     align-items : center;
-    .buttons {
-        margin-left: auto;
+    .admin-btn {
+        margin-left: 1rem;
+        margin-right: auto;
+        border: 1px solid $gray-medium-light;
     }
     a {
         margin-left: auto;
         margin-right: auto;
     }
+}
+
+.buttons {
+    margin-left: auto;
+    color: white;
 }
 
 /* typography */
@@ -251,6 +258,7 @@ input {
 .cinemas, .movies, .showings {
     list-style: none;
     margin: 0;
+    padding-left: 20px;
     li {
         overflow: auto;
         padding: 10px 0;

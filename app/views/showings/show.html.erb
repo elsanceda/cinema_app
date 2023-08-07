@@ -2,6 +2,14 @@
     <h1 style="margin-bottom: 20px">
         <%= @showing.movie.title %>
     </h1>
+
+    <% if current_user.admin? %>
+        <div class="buttons">
+            <%= link_to "Delete", @showing, data: { "turbo-method": :delete,
+                                                   turbo_confirm: "You sure?" },
+                                          class: "btn btn-md btn-danger" %>
+        </div>
+    <% end %>
 </div>
 
 <h5><%= time_in_words(@showing.timeslot) %></h5>

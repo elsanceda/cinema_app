@@ -1,3 +1,13 @@
 <li>
     <h2><%= link_to movie.title, movie %></h2>
+
+    <% if current_user.admin? %>
+        <div class="buttons">
+            <%= link_to "Edit", edit_movie_path(movie),
+                                    class: "btn btn-sm btn-primary" %>
+            <%= link_to "Delete", movie, data: { "turbo-method": :delete,
+                                                    turbo_confirm: "You sure?" },
+                                           class: "btn btn-sm btn-danger" %>
+        </div>
+    <% end %>
 </li>
