@@ -2,7 +2,7 @@
     <h2><%= link_to cinema.name, cinema %></h2>
     <%= cinema.location %></p>
 
-    <% if current_user.admin? %>
+    <% if logged_in? && current_user.admin? %>
         <div class="buttons">
             <%= link_to "Edit", edit_cinema_path(cinema),
                                     class: "btn btn-sm btn-primary" %>

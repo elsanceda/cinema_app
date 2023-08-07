@@ -3,7 +3,7 @@
     <%= time_in_words(showing.timeslot) %> | 
     <%= showing.cinema.name %></p>
 
-    <% if current_user.admin? %>
+    <% if logged_in? && current_user.admin? %>
         <div class="buttons">
             <%= link_to "Delete", showing, data: { "turbo-method": :delete,
                                                     turbo_confirm: "You sure?" },

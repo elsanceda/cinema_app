@@ -1,7 +1,7 @@
 <li>
     <h2><%= link_to movie.title, movie %></h2>
 
-    <% if current_user.admin? %>
+    <% if logged_in? && current_user.admin? %>
         <div class="buttons">
             <%= link_to "Edit", edit_movie_path(movie),
                                     class: "btn btn-sm btn-primary" %>
