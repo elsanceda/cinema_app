@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_07_044458) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_07_050221) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -27,6 +27,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_07_044458) do
     t.text "synopsis"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "showings", force: :cascade do |t|
+    t.bigint "cinema_id", null: false
+    t.bigint "movie_id", null: false
+    t.bigint "timeslot_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cinema_id", "timeslot_id"], name: "index_showings_on_cinema_id_and_timeslot_id", unique: true
+    t.index ["cinema_id"], name: "index_showings_on_cinema_id"
+    t.index ["movie_id"], name: "index_showings_on_movie_id"
+    t.index ["timeslot_id"], name: "index_showings_on_timeslot_id"
   end
 
   create_table "timeslots", force: :cascade do |t|
@@ -48,4 +60,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_07_044458) do
     t.index ["mobile_number"], name: "index_users_on_mobile_number", unique: true
   end
 
+  add_foreign_key "showings", "cinemas"
+  add_foreign_key "showings", "movies"
+  add_foreign_key "showings", "timeslots"
 end
