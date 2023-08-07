@@ -1,6 +1,32 @@
 class BookingsController < ApplicationController
-    before_action :logged_in_user, only: [:new, :create, :edit, :update, :destroy]
-    before_action :correct_user,   only: [:edit, :update, :destroy]
+    before_action :logged_in_user, only: [:new, :create, :destroy]
+    before_action :correct_user,   only: [:destroy]
+
+    def show
+        @booking = Booking.find(params[:id])
+    end
+
+    def new
+        @booking = Booking.new
+        @showings = Showing.all
+        @free_seats = (1..10).to_a
+    end
+
+    def create
+        @booking = Booking.new(booking_params)
+        if @booking.save
+            flash[:success] = "Booking created"
+            redirect_to @booking
+        else
+            render 'new', status: :unprocessable_entity
+        end
+    end
+
+    def destroy
+        Booking.find(params[:id]).destroy
+        flash[:success] = "Booking deleted"
+        redirect_to admin_url
+    end
 
     private
 

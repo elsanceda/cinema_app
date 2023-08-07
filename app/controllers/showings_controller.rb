@@ -34,11 +34,11 @@ class ShowingsController < ApplicationController
     end
 
     # Returns list of available timeslots
-    def get_free_timeslots
-        timeslots = [600, 840, 1080, 1320]
-        other_showings = Showing.where(cinema_id: params[:cinema_id]).pluck(:timeslot)
-        @free_timeslots = timeslots.reject { |timeslot| other_showings.include?(timeslot) }
-    end
+    # def get_free_timeslots
+    #     timeslots = [600, 840, 1080, 1320]
+    #     other_showings = Showing.where(cinema_id: params[:cinema_id]).pluck(:timeslot)
+    #     @free_timeslots = timeslots.reject { |timeslot| other_showings.include?(timeslot) }
+    # end
 
     private
 
