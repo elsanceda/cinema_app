@@ -19,3 +19,22 @@ User.create!(full_name:  "Example User",
              mobile_number: "321321321",
              password:              "Password1",
              password_confirmation: "Password1")
+
+# Movies
+3.times do
+    title = Faker::Movie.title
+    synopsis = Faker::Lorem.sentence(word_count: 15)
+    Movie.create!(title: title, synopsis: synopsis)
+end
+
+# Cinemas
+3.times do |n|
+    name = "#{Faker::Company.name} Theater"
+    location = Faker::Address.city
+    Cinema.create!(name: name, location: location, seats: 10-n)
+end
+
+# Showing
+Showing.create!(timeslot: 600,
+                cinema_id: 1,
+                movie_id: 1)

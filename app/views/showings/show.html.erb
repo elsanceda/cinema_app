@@ -1,0 +1,20 @@
+<div class="flex">
+    <h1 style="margin-bottom: 20px">
+        <%= @showing.movie.title %>
+    </h1>
+</div>
+
+<h5><%= time_in_words(@showing.timeslot) %></h5>
+<h5><%= @showing.cinema.name %>, <%= @showing.cinema.location %></h5>
+<h5>Available Seats: <%= @showing.available_seats.count %></h5>
+
+<hr>
+
+<h3>Synopsis</h3>
+<p><%= @showing.movie.synopsis %></p>
+
+<hr>
+
+<div class="book-btn">
+    <%= link_to "Book", "#", class: "btn btn-lg btn-primary btn-block" %>
+</div>

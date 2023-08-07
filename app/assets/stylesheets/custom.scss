@@ -39,7 +39,7 @@ textarea {
 .flex {
     display: flex;
     align-items : center;
-    .btns {
+    .buttons {
         margin-left: auto;
     }
     a {
@@ -214,6 +214,7 @@ input, textarea, select, .uneditable-input {
     border: 1px solid #bbb;
     width: 100%;
     margin-bottom: 15px;
+    padding: 6px;
     @include box_sizing;
 }
 
@@ -266,6 +267,13 @@ input {
             color: $gray;
         }
     }
+}
+
+/* Booking */
+
+.book-btn {
+    margin: auto; 
+    max-width: 40rem;
 }
 
 /* miscellaneous */

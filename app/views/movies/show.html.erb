@@ -3,7 +3,7 @@
     <h1><%= @movie.title %></h1>
 
     <% if current_user.admin? %>
-        <div class="btns">
+        <div class="buttons">
             <%= link_to "Edit", edit_movie_path(@movie),
                                     class: "btn btn-md btn-primary" %>
             <%= link_to "Delete", @movie, data: { "turbo-method": :delete,
