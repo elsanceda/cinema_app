@@ -14,3 +14,14 @@
 </div>
 
 <p><%= @movie.synopsis %></p>
+
+<% if @movie_showings.any? %>
+    <hr>
+    <h3 class="left">Showings</h3>
+    
+    <ol class="movies">
+        <%= render @movie_showings %>
+    </ol>
+    
+    <%= will_paginate @movie_showings %>
+<% end %>

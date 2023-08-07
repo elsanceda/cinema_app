@@ -14,3 +14,14 @@
 </div>
 
 <h2 class="left"><%= @cinema.location %> | Seats: <%= @cinema.seats %></h2>
+
+<% if @cinema_showings.any? %>
+    <hr>
+    <h3 class="left">Showings</h3>
+    
+    <ol class="movies">
+        <%= render @cinema_showings %>
+    </ol>
+    
+    <%= will_paginate @cinema_showings %>
+<% end %>

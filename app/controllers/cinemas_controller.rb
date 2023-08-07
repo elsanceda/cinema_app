@@ -8,7 +8,7 @@ class CinemasController < ApplicationController
 
     def show
         @cinema = Cinema.find(params[:id])
-        # TODO: show cinema showings
+        @cinema_showings = @cinema.cinema_showings.paginate(page: params[:page])
     end
 
     def new
