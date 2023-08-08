@@ -3,9 +3,6 @@ class DashboardController < ApplicationController
   before_action :admin_user,      only: [:admin]
 
   def home
-  end
-
-  def admin
     @showings = Showing.paginate(page: params[:page], per_page: 5)
     @movies = Movie.paginate(page: params[:page], per_page: 5)
     @cinemas = Cinema.paginate(page: params[:page], per_page: 5)

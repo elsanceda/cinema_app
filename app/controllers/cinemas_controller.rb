@@ -42,7 +42,7 @@ class CinemasController < ApplicationController
     def destroy
         Cinema.find(params[:id]).destroy
         flash[:success] = "Cinema deleted"
-        redirect_to admin_url # TODO: redirect to admin dashboard
+        redirect_to root_url # TODO: redirect to admin dashboard
     end
 
     def bookings

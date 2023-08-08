@@ -33,7 +33,7 @@ class ShowingsController < ApplicationController
     def destroy
         Showing.find(params[:id]).destroy
         flash[:success] = "Showing deleted"
-        redirect_to admin_url
+        redirect_to root_url
     end
 
     # Returns list of available timeslots

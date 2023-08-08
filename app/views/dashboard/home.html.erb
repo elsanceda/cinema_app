@@ -1,5 +1,66 @@
-<div class="welcome-box">
-    <div class="center jumbotron">
-        <%= render 'welcome' %>
+<% unless logged_in? %>
+    <div class="welcome-box">
+        <div class="center jumbotron">
+            <%= render 'welcome' %>
+        </div>
     </div>
-</div>
+<% end %>
+
+<section class="showings">
+    <div class="flex">
+        <h1 class="left">Showings | </h1>
+
+        <% if logged_in? && current_user.admin? %>
+            <div class="admin-btn">
+                <%= link_to "+ New Showing", new_showing_path,
+                                        class: "btn btn-md btn-secondary" %>
+            </div>
+        <% end %>
+    </div>
+
+    <ul class="indices">
+        <%= render @showings %>
+    </ul>
+
+    <%= will_paginate @showings %>
+    <hr>
+</section>
+
+<section class="movies">
+    <div class="flex">
+        <h1 class="left">Movies | </h1>
+
+        <% if logged_in? && current_user.admin? %>
+            <div class="admin-btn">
+                <%= link_to "+ New Movie", new_movie_path,
+                                       class: "btn btn-md btn-secondary" %>
+            </div>
+        <% end %>
+    </div>
+
+    <ul class="indices">
+        <%= render @movies %>
+    </ul>
+
+    <%= will_paginate @movies %>
+    <hr>
+</section>
+
+<section class="cinemas">
+    <div class="flex">
+        <h1 class="left">Cinemas | </h1>
+
+        <% if logged_in? && current_user.admin? %>
+            <div class="admin-btn">
+                <%= link_to "+ New Cinema", new_cinema_path,
+                                        class: "btn btn-md btn-secondary" %>
+            </div>
+        <% end %>
+    </div>
+
+    <ul class="indices">
+        <%= render @cinemas %>
+    </ul>
+
+    <%= will_paginate @cinemas %>
+</section>
