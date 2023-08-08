@@ -38,3 +38,7 @@ end
 Showing.create!(timeslot: 600,
                 cinema_id: 1,
                 movie_id: 1)
+
+Showing.create!(timeslot: 600,
+                cinema_id: 2,
+                movie_id: 2)
