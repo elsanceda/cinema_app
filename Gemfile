@@ -35,8 +35,10 @@ gem "stimulus-rails",             "1.2.1"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder",                   "2.11.5"
 
+gem "requestjs-rails",            "0.0.10"
+
 # Use Redis adapter to run Action Cable in production
-# gem "redis", "~> 4.0"
+gem "redis", "~> 4.0"
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"

@@ -8,6 +8,17 @@ Rails.application.routes.draw do
   get  '/admin',  to: 'dashboard#admin'
   resources :users, only: [:new, :create]
   resources :movies
-  resources :cinemas
-  resources :showings, only: [:index, :show, :new, :create, :destroy]
+  resources :cinemas do
+    member do
+      get :bookings
+    end
+  end
+  resources :showings do
+    collection do
+      get :free_timeslots
+    end
+    member do
+      get :bookings
+    end
+  end
 end

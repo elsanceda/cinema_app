@@ -1,17 +1,22 @@
 <%= form_with(model: @showing) do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
 
-    <%= f.label :cinema_id %>
-    <%= f.collection_select :cinema_id, @cinemas, :id, :name, 
-                            { prompt: "Select cinema" } %>
-
     <%= f.label :movie_id %>
-    <%= f.collection_select :movie_id, @movies, :id, :title,
-                            { prompt: "Select movie" } %>
+    <%= f.select :movie_id, @movies.map { |m| [ m.title, m.id ] },
+                            { prompt: "Select movie" }, class: 'form-control' %>
 
-    <%= f.label :timeslot %>
-    <%= f.select :timeslot, @free_timeslots.map { |t| [ time_in_words(t), t ] }, 
-                            { prompt: "Select timeslot" } %>
+    <div data-controller="select">
+        <%= f.label :cinema_id %>
+        <%= f.select :cinema_id, @cinemas.map { |c| [ c.name, c.id ] }, 
+                                { prompt: "Select cinema" }, 
+                                { class: 'form-control', 
+                                  data: { action: "change->select#change" } } %>
+        
+        <%= f.label :timeslot %>
+        <%= f.select :timeslot, @timeslots.map { |t| [ time_in_words(t), t ] }, 
+                                {}, { class: 'form-control',
+                                      data: { select_target: "tSelect" } } %>
+    </div>
 
     <%= f.submit yield(:button_text), class: "btn btn-primary" %>
 <% end %>

@@ -14,7 +14,7 @@ class ShowingsController < ApplicationController
         @showing = Showing.new
         @cinemas = Cinema.all
         @movies = Movie.all
-        @free_timeslots = [600, 840, 1080, 1320]
+        @timeslots = [600, 840, 1080, 1320]
     end
 
     def create
@@ -23,6 +23,9 @@ class ShowingsController < ApplicationController
             flash[:success] = "Showing created"
             redirect_to @showing
         else
+            @cinemas = Cinema.all
+            @movies = Movie.all
+            @timeslots = [600, 840, 1080, 1320]
             render 'new', status: :unprocessable_entity
         end
     end
@@ -34,11 +37,16 @@ class ShowingsController < ApplicationController
     end
 
     # Returns list of available timeslots
-    # def get_free_timeslots
-    #     timeslots = [600, 840, 1080, 1320]
-    #     other_showings = Showing.where(cinema_id: params[:cinema_id]).pluck(:timeslot)
-    #     @free_timeslots = timeslots.reject { |timeslot| other_showings.include?(timeslot) }
-    # end
+    def free_timeslots
+        timeslots = [600, 840, 1080, 1320]
+        other_showings = Showing.where(cinema_id: params[:cinema_id]).pluck(:timeslot)
+        @free_timeslots = timeslots.reject { |timeslot| other_showings.include?(timeslot) }
+        @target = params[:target]
+        puts(@free_timeslots)
+        respond_to do |format|
+            format.turbo_stream
+        end
+    end
 
     private
 

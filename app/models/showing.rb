@@ -7,7 +7,7 @@ class Showing < ApplicationRecord
   validates :movie_id, presence: true
   validates :timeslot, presence: true
   validates :timeslot, uniqueness: { scope: :cinema,
-                                     message: "already taken" }
+                                     message: "for that cinema already taken" }
   
   # Returns list of seats that are already taken
   def booked_seats

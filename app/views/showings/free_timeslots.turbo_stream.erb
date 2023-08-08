@@ -1,0 +1,3 @@
+<% turbo_stream.update @target do %>
+    <% options_for_select @free_timeslots.map { |t| [ time_in_words(t), t ] } %>
+<% end %>
