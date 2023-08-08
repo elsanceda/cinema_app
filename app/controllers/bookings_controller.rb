@@ -2,22 +2,20 @@ class BookingsController < ApplicationController
     before_action :logged_in_user, only: [:new, :create, :destroy]
     before_action :correct_user,   only: [:destroy]
 
-    def show
-        @booking = Booking.find(params[:id])
-    end
-
     def new
         @booking = Booking.new
-        @showings = Showing.all
-        @free_seats = (1..10).to_a
+        @showing = Showing.find(params[:showing_id])
+        @seats = @showing.available_seats
     end
 
     def create
-        @booking = Booking.new(booking_params)
+        @booking = current_user.bookings.build(booking_params)
         if @booking.save
             flash[:success] = "Booking created"
-            redirect_to @booking
+            redirect_to root_url #TODO: redirect to user
         else
+            @showing = Showing.find(params[:showing_id])
+            @seats = @showing.available_seats
             render 'new', status: :unprocessable_entity
         end
     end
@@ -25,18 +23,17 @@ class BookingsController < ApplicationController
     def destroy
         Booking.find(params[:id]).destroy
         flash[:success] = "Booking deleted"
-        redirect_to admin_url
+        redirect_to root_url #TODO: redirect to user
     end
 
     private
 
         def booking_params
-            params.require(:booking).permit(:seat_number, :user_id, :showing_id)
+            params.require(:booking).permit(:seat_number, :showing_id)
         end
 
         def correct_user
             @booking = current_user.bookings.find_by(id: params[:id])
             redirect_to(root_url, status: :see_other) if @booking.nil?
         end
-
 end

@@ -1,0 +1,22 @@
+<% provide(:title, 'New booking') %>
+<% provide(:button_text, 'Book') %>
+<h1>New Booking</h1>
+
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <hr>
+        <h3 class="left"><%= @showing.movie.title %></h2>
+        <%= time_in_words(@showing.timeslot) %> | 
+        <%= @showing.cinema.name %></p>
+        <hr>
+
+        <%= form_with(model: @booking) do |f| %>
+            <%= f.hidden_field :showing_id, :value => @showing.id %>
+
+            <%= f.select :seat_number, @seats.map { |s| [ s, s ] },
+                            { prompt: "Select your seat" }, class: 'form-control' %>
+            
+            <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+        <% end %>
+    </div>
+</div>

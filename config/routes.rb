@@ -17,8 +17,6 @@ Rails.application.routes.draw do
     collection do
       get :free_timeslots
     end
-    member do
-      get :bookings
-    end
   end
+  resources :bookings
 end
