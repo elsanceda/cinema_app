@@ -16,6 +16,7 @@
                 <li><%= link_to "Showings", showings_path %></li>
                 <li><%= link_to "Movies", movies_path %></li>
                 <li><%= link_to "Cinemas", cinemas_path %></li>
+                <li><%= link_to "User", current_user %></li>
                 <% if logged_in? %>
                     <% if current_user.admin? %>
                         <li><%= link_to "Admin", admin_path %></li>

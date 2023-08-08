@@ -1,0 +1,12 @@
+<li>
+    <h2><%= link_to booking.showing.movie.title, booking.showing %></h2>
+    <%= time_in_words(booking.showing.timeslot) %> | 
+    <%= booking.showing.cinema.name %> <br>
+    Seat Number: <%= booking.seat_number %></p>
+
+    <% if current_user?(booking.user) %>
+        <%= link_to "Delete", booking, data: { "turbo-method": :delete,
+                                                    turbo_confirm: "You sure?" },
+                                           class: "btn btn-sm btn-danger" %>
+    <% end %>
+</li>
