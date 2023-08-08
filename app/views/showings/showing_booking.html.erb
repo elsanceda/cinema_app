@@ -1,0 +1,28 @@
+<div class="flex">
+    <h1 style="margin-bottom: 20px">
+        <%= @showing.movie.title %>
+    </h1>
+
+    <% if logged_in? && current_user.admin? %>
+        <div class="buttons">
+            <%= link_to "Delete", @showing, data: { "turbo-method": :delete,
+                                                   turbo_confirm: "You sure?" },
+                                          class: "btn btn-md btn-danger" %>
+        </div>
+    <% end %>
+</div>
+
+<h5><%= time_in_words(@showing.timeslot) %></h5>
+<h5><%= @showing.cinema.name %>, <%= @showing.cinema.location %></h5>
+<h5>Available Seats: <%= @showing.available_seats.count %></h5>
+
+<hr>
+<h3 class="left">Bookings (<%= @bookings.count %>)</h3>
+
+<% if @bookings.any? %>    
+    <ol class="indices">
+        <%= render @bookings %>
+    </ol>
+    
+    <%= will_paginate @bookings %>
+<% end %>

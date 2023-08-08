@@ -4,6 +4,8 @@
 
     <% if logged_in? && current_user.admin? %>
         <div class="buttons">
+            <%= link_to "Bookings", bookings_cinema_path(cinema),
+                                    class: "btn btn-sm btn-primary" %>
             <%= link_to "Edit", edit_cinema_path(cinema),
                                     class: "btn btn-sm btn-primary" %>
             <%= link_to "Delete", cinema, data: { "turbo-method": :delete,

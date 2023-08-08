@@ -48,6 +48,13 @@ class ShowingsController < ApplicationController
         end
     end
 
+    def bookings
+        @showing  = Showing.find(params[:id])
+        @title = "Bookings | #{@showing.movie.title}"
+        @bookings = @showing.bookings.paginate(page: params[:page])
+        render 'showing_booking', status: :unprocessable_entity
+    end
+
     private
 
         def showing_params
