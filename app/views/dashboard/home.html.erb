@@ -8,7 +8,10 @@
 
 <section class="showings">
     <div class="flex">
-        <h1 class="left">Showings | </h1>
+        <h1 class="left">
+            Showings
+            <%= "(#{@showings.count})" if logged_in? && current_user.admin? %>
+        </h1>
 
         <% if logged_in? && current_user.admin? %>
             <div class="admin-btn">
@@ -28,7 +31,10 @@
 
 <section class="movies">
     <div class="flex">
-        <h1 class="left">Movies | </h1>
+        <h1 class="left">
+            Movies
+            <%= "(#{@movies.count})" if logged_in? && current_user.admin? %>
+        </h1>
 
         <% if logged_in? && current_user.admin? %>
             <div class="admin-btn">
@@ -48,7 +54,10 @@
 
 <section class="cinemas">
     <div class="flex">
-        <h1 class="left">Cinemas | </h1>
+        <h1 class="left">
+            Cinemas
+            <%= "(#{@cinemas.count})" if logged_in? && current_user.admin? %>
+        </h1>
 
         <% if logged_in? && current_user.admin? %>
             <div class="admin-btn">
