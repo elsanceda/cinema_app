@@ -39,20 +39,25 @@ textarea {
 .flex {
     display: flex;
     align-items : center;
-    .admin-btn {
-        margin-left: 1rem;
-        margin-right: auto;
-        border: 1px solid $gray-medium-light;
-    }
     a {
         margin-left: auto;
         margin-right: auto;
     }
 }
 
+.admin-btn {
+    margin-left: 1rem;
+    margin-right: auto;
+    border: 1px solid gray;
+    border-radius: 3px;
+}
+
 .buttons {
     margin-left: auto;
-    color: white;
+    .booking {
+        border: 1px solid gray;
+        border-radius: 3px;
+    }
 }
 
 /* typography */

@@ -6,8 +6,8 @@
 
     <% if logged_in? && current_user.admin? %>
         <div class="buttons">
-            <%= link_to "Bookings", bookings_showing_path(showing),
-                                    class: "btn btn-sm btn-primary" %>
+            <%= link_to "Bookings (#{showing.bookings.count})", bookings_showing_path(showing),
+                                    class: "booking btn btn-sm btn-secondary" %>
             <%= link_to "Delete", showing, data: { "turbo-method": :delete,
                                                     turbo_confirm: "You sure?" },
                                            class: "btn btn-sm btn-danger" %>

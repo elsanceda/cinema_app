@@ -11,8 +11,8 @@ class BookingsController < ApplicationController
     def create
         @booking = current_user.bookings.build(booking_params)
         if @booking.save
-            flash[:success] = "Booking created"
-            redirect_to current_user #TODO: redirect to user
+            flash[:success] = "Booking made"
+            redirect_to current_user
         else
             @showing = Showing.find(params[:showing_id])
             @seats = @showing.available_seats
@@ -22,8 +22,8 @@ class BookingsController < ApplicationController
 
     def destroy
         Booking.find(params[:id]).destroy
-        flash[:success] = "Booking deleted"
-        redirect_to current_user #TODO: redirect to user
+        flash[:success] = "Booking cancelled"
+        redirect_to current_user
     end
 
     private

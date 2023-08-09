@@ -13,12 +13,13 @@
     <% end %>
 </div>
 
+<h3>Synopsis</h3>
 <p><%= @movie.synopsis %></p>
 
+<hr>
+<h3 class="left">Showings (<%= @movie_showings.count %>)</h3>
+
 <% if @movie_showings.any? %>
-    <hr>
-    <h3 class="left">Showings</h3>
-    
     <ol class="indices">
         <%= render @movie_showings %>
     </ol>

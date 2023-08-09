@@ -42,7 +42,6 @@ class ShowingsController < ApplicationController
         other_showings = Showing.where(cinema_id: params[:cinema_id]).pluck(:timeslot)
         @free_timeslots = timeslots.reject { |timeslot| other_showings.include?(timeslot) }
         @target = params[:target]
-        puts(@free_timeslots)
         respond_to do |format|
             format.turbo_stream
         end

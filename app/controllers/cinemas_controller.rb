@@ -8,7 +8,7 @@ class CinemasController < ApplicationController
 
     def show
         @cinema = Cinema.find(params[:id])
-        @cinema_showings = @cinema.cinema_showings.paginate(page: params[:page])
+        @showings = @cinema.showings.paginate(page: params[:page])
     end
 
     def new
@@ -42,14 +42,13 @@ class CinemasController < ApplicationController
     def destroy
         Cinema.find(params[:id]).destroy
         flash[:success] = "Cinema deleted"
-        redirect_to root_url # TODO: redirect to admin dashboard
+        redirect_to root_url
     end
 
     def bookings
         @cinema  = Cinema.find(params[:id])
         @title = "Bookings | #{@cinema.name}"
-        cinema_showings = Showing.where(cinema_id: @cinema.id).pluck(:id)
-        @bookings = Booking.where(showing_id: cinema_showings).paginate(page: params[:page])
+        @bookings = @cinema.bookings.paginate(page: params[:page])
         render 'cinema_booking', status: :unprocessable_entity
     end
 

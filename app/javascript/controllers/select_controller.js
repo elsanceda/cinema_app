@@ -4,10 +4,7 @@ import { get } from "@rails/request.js";
 // Connects to data-controller="showing-timeslots"
 export default class extends Controller {
   static targets = ["tSelect"]
-  connect() {
-    console.log("Hello, World!")
-  }
-
+  
   change(event) {
     let select = event.target.selectedOptions[0].value
     let target = this.tSelectTarget.id

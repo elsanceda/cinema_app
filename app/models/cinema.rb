@@ -5,9 +5,4 @@ class Cinema < ApplicationRecord
     has_many :showings, dependent: :destroy
     has_many :bookings, through: :showings
     default_scope -> { order(created_at: :desc) }
-
-    # Returns a cinema's showings.
-    def cinema_showings
-        Showing.where(cinema_id: id)
-    end
 end

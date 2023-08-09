@@ -4,6 +4,8 @@
 
     <% if logged_in? && current_user.admin? %>
         <div class="buttons">
+            <%= link_to "Bookings (#{@cinema.bookings.count})", bookings_cinema_path(@cinema),
+                                    class: "booking btn btn-md btn-secondary" %>
             <%= link_to "Edit", edit_cinema_path(@cinema),
                                     class: "btn btn-md btn-primary" %>
             <%= link_to "Delete", @cinema, data: { "turbo-method": :delete,
@@ -15,13 +17,13 @@
 
 <h2 class="left"><%= @cinema.location %> | Seats: <%= @cinema.seats %></h2>
 
-<% if @cinema_showings.any? %>
-    <hr>
-    <h3 class="left">Showings</h3>
-    
+<hr>
+<h3 class="left">Showings (<%= @showings.count %>)</h3>
+
+<% if @showings.any? %>
     <ol class="indices">
-        <%= render @cinema_showings %>
+        <%= render @showings %>
     </ol>
     
-    <%= will_paginate @cinema_showings %>
+    <%= will_paginate @showings %>
 <% end %>
