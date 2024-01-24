@@ -1,4 +1,4 @@
-# Toy App
+# Cinema App
 
 This is a Ruby on Rails app for booking cinema seats to watch movies
 
